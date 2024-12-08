@@ -1,0 +1,26 @@
+{
+  "/api": {
+    "target": "http://sister.eprofessionalti.com",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/url": {
+    "target": "http://websag.eprofessionalti.com/api/integra/movimentacao/entrada",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/saida": {
+    "target": "http://websag.eprofessionalti.com/api/integra/movimentacao/saida",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/validate": {
+    "target": "http://websag.eprofessionalti.com/api/integra/movimentacao/validatag",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

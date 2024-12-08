@@ -1,0 +1,122 @@
+<flex class="shadow-light" alignItems="center" justify="center" width="350px">
+  <ng-container *ngIf="!success">
+    <div [formGroup]="form">
+      <flex direction="column" margin="20px" gap="10px">
+        <span
+          >Por favor, insira o CNPJ da empresa proprietária do container.
+        </span>
+        <mat-form-field class="form" appearance="outline">
+          <mat-label>CNPJ</mat-label>
+          <input
+            matInput
+            formControlName="cnpj"
+            placeholder="Digite o CNPJ"
+            (input)="applyCnpjMask($event)"
+          />
+          <button
+            class="button2"
+            mat-icon-button
+            matSuffix
+            aria-label="Limpar CNPJ"
+            (click)="clearCnpj()"
+          >
+            <i class="fa fa-times"></i>
+          </button>
+        </mat-form-field>
+
+        <flex justify="space-between">
+          <button mat-raised-button color="primary" (click)="voltar()">
+            VOLTAR
+          </button>
+          <button
+            (click)="enviar()"
+            mat-raised-button
+            color="primary"
+            [disabled]="
+              loading || form.get('cnpj')?.invalid || !form.get('cnpj')?.value
+            "
+          >
+            <mat-spinner *ngIf="loading" diameter="40"></mat-spinner>
+            <span *ngIf="!loading">ENVIAR</span>
+          </button>
+        </flex>
+      </flex>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="success === true">
+    <flex
+      [formGroup]="cadastroEntradaForm"
+      direction="column"
+      gap="10px"
+      margin="20px"
+    >
+      <span>Preencha os formulário para o cadastro do container!</span>
+      <mat-form-field appearance="outline">
+        <mat-label>Tipo</mat-label>
+        <input formControlName="tipo" matInput type="number" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>OS</mat-label>
+        <input formControlName="os" matInput />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Armador</mat-label>
+        <input formControlName="armador" matInput />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Data de entrada</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="data" />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Container</mat-label>
+        <input formControlName="container" matInput />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Tipo do container</mat-label>
+        <input formControlName="cntrType" matInput />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Depot</mat-label>
+        <input formControlName="depot" matInput />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Deposito</mat-label>
+        <input formControlName="deposito" matInput />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Terminal</mat-label>
+        <input formControlName="terminal" matInput />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Tag</mat-label>
+        <input formControlName="tag" matInput />
+      </mat-form-field>
+
+      <flex justify="space-between">
+        <button mat-raised-button color="primary" (click)="voltar()">
+          VOLTAR
+        </button>
+        <button (click)="create()" mat-raised-button color="primary">
+          <mat-spinner *ngIf="loading" diameter="40"></mat-spinner>
+          <span *ngIf="!loading">CADASTRAR</span>
+        </button>
+      </flex>
+    </flex>
+  </ng-container>
+</flex>
+
+<!-- [disabled]="loading || cadastroEntradaForm.invalid || anyFieldEmpty()" -->

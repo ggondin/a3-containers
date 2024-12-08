@@ -1,0 +1,19 @@
+@import "src/styles.scss";
+
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+}
+
+.content {
+  flex: 1;
+  margin: 50px 0;
+  display: flex;
+  align-items: center;
+}
+app-header,
+app-footer {
+  width: 100%;
+}
