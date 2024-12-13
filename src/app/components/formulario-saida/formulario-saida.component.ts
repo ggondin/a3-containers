@@ -132,10 +132,15 @@ export class FormularioSaidaComponent implements OnInit {
           const res = JSON.parse(data) as ApiResponse;
           this.success = res.SUCCESS;
           if (res.SUCCESS === true) {
+            this.open(true);
             this._snackBar.open('Container liberado com sucesso!', 'Fechar', {
               duration: 2500,
             });
-            this.location.back();
+            setTimeout(() => {
+              this.location.back();
+            }, 1000);
+          } else {
+            this.open(false);
           }
           console.log(res); // Exibe a resposta para debug
         },
@@ -241,5 +246,18 @@ export class FormularioSaidaComponent implements OnInit {
       this.body = body;
       this.buildPayloadForm(body);
     }
+  }
+
+  open(liberar: boolean) {
+    this.service
+      .open(liberar)
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe({
+        next: (data: any) => {
+          // this._snackBar.open()
+          console.log(data);
+        },
+        error: (erro: HttpErrorResponse) => {},
+      });
   }
 }

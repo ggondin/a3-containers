@@ -21,6 +21,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { LoggingInterceptor } from 'src/interceptor.interceptor';
 import { HomeComponent } from './components/home/home.component';
 import { FormularioSaidaComponent } from './components/formulario-saida/formulario-saida.component';
+import { LoginComponent } from './components/login/login.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { FormularioSaidaComponent } from './components/formulario-saida/formular
     FormularioContainerComponent,
     HomeComponent,
     FormularioSaidaComponent,
+    LoginComponent,
+    NavigationComponent,
   ],
   imports: [
     BrowserModule,
